@@ -3,6 +3,12 @@ import NoteContext from "./NoteContext";
 
 const NoteState = ({ children }) => {
     const [theme, setTheme] = useState("dark");
+    const [showAlert, setShowAlert] = useState(true);
+    const [editNote, setEditNote] = useState(false);
+    const [editTag, setEditTag] = useState(false);
+    const [title, setTitle] = useState(false);
+    const [desc, setDesc] = useState(false);
+    const [color, setColor] = useState("#7e7e7e");
     const initialNotes = [
         {
             _id: "64a061ef3b04ddc296398819",
@@ -35,7 +41,26 @@ const NoteState = ({ children }) => {
 
     const [notes, setNotes] = useState(initialNotes);
     return (
-        <NoteContext.Provider value={{ theme, setTheme, notes, setNotes }}>
+        <NoteContext.Provider
+            value={{
+                theme,
+                setTheme,
+                notes,
+                setNotes,
+                showAlert,
+                setShowAlert,
+                editNote,
+                setEditNote,
+                editTag,
+                setEditTag,
+                title,
+                setTitle,
+                desc,
+                setDesc,
+                color,
+                setColor,
+            }}
+        >
             {children}
         </NoteContext.Provider>
     );

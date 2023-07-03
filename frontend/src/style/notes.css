@@ -1,0 +1,4 @@
+.notes-container{
+    columns: 4;
+    column-gap: 15px;
+}
