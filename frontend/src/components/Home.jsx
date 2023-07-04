@@ -4,15 +4,17 @@ import Alert from "./Alert";
 import EditNotePopup from "./EditNotePopup";
 import EditTagPopup from "./EditTagPopup";
 import NoteContext from "../context/notes/NoteContext";
+import AddNotePopup from "./AddNotePopup";
 
 const Home = () => {
     const context = useContext(NoteContext);
-    const { editTag, editNote } = context;
+    const { showAddNote, showEditTag, showEditNote } = context;
     return (
         <div className="container">
             <Alert />
-            {editNote && <EditNotePopup />}
-            {editTag && <EditTagPopup />}
+            {showAddNote && <AddNotePopup />}
+            {showEditNote && <EditNotePopup />}
+            {showEditTag && <EditTagPopup />}
             <Notes />
         </div>
     );

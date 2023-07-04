@@ -1,30 +1,19 @@
 .note-card {
-    position: relative;
     height: 100%;
     break-inside: avoid;
     margin-bottom: 15px;
     border-radius: 12px;
     padding: 6px;
     display: flex;
+    min-height: 100px;
+    max-height: 500px;
+}
+.note-card>div:nth-child(1){
+    display: flex;
     flex-direction: column;
     justify-content: left;
-}
-.note-card > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.note-card > div span {
-    display: flex;
-    gap: 6px;
-}
-.note-card > div span svg{
-    font-size: 20px;
+    width: 100%;
     cursor: pointer;
-    transition: ease-in-out 0.3s;
-}
-.note-card > div span svg:hover{
-    transform: scale(1.2);
 }
 .note-card h5 {
     margin: 0px;
@@ -33,12 +22,17 @@
 .note-card p {
     margin: 0px;
 }
+
+.note-card>div:nth-child(2){
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    width: 24px;
+}
+
 .color {
-    position: absolute;
-    bottom: 6px;
-    right: 6px;
-    height: 20px;
-    width: 20px;
+    height: 24px;
+    width: 24px;
     border-radius: 50%;
     transition: ease-in-out 0.3s;
     cursor: pointer;

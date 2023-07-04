@@ -75,7 +75,7 @@
 }
 
 .edit-tag .update-button{
-    border: 2px solid teal;
+    border: 2px solid #0f5132;
     border-radius: 8px;
     padding: 4px 12px;
     background: white;
@@ -84,6 +84,6 @@
 }
 
 .edit-tag .update-button:hover{
-    background: teal;
+    background: #0f5132;
     color: white;
 }

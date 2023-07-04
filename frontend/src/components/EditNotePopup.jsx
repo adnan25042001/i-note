@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../style/editNotePopup.css";
 import { MdClose } from "react-icons/md";
 import NoteContext from "../context/notes/NoteContext";
 
 const EditNotePopup = () => {
     const context = useContext(NoteContext);
-    const { setEditNote, title, desc } = context;
+    const { setShowEditNote, title, desc } = context;
+    const [bgClr, setBgClr] = useState("#7e7e7e40");
     return (
         <div className="edit-note-container">
             <div className="glass-effect"></div>
-            <div className="edit-note">
-                <MdClose onClick={() => setEditNote(false)} />
+            <div className="edit-note" style={{ background: bgClr }}>
+                <MdClose onClick={() => setShowEditNote(false)} />
                 <div className="note scrollbar">
                     <h4 contentEditable>{title || "Title"}</h4>
                     <div className="line"></div>

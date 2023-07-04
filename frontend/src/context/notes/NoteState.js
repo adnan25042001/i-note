@@ -4,11 +4,12 @@ import NoteContext from "./NoteContext";
 const NoteState = ({ children }) => {
     const [theme, setTheme] = useState("dark");
     const [showAlert, setShowAlert] = useState(true);
-    const [editNote, setEditNote] = useState(false);
-    const [editTag, setEditTag] = useState(false);
+    const [showAddNote, setShowAddNote] = useState(false);
+    const [showEditNote, setShowEditNote] = useState(false);
+    const [showEditTag, setShowEditTag] = useState(false);
     const [title, setTitle] = useState(false);
     const [desc, setDesc] = useState(false);
-    const [color, setColor] = useState("#7e7e7e");
+    const [selectedTag, setSelectedTag] = useState("#7e7e7e");
     const initialNotes = [
         {
             _id: "64a061ef3b04ddc296398819",
@@ -40,6 +41,11 @@ const NoteState = ({ children }) => {
     ];
 
     const [notes, setNotes] = useState(initialNotes);
+
+    const handleAddNote = (note) => {
+        console.log(note, "Hello");
+    };
+
     return (
         <NoteContext.Provider
             value={{
@@ -49,16 +55,19 @@ const NoteState = ({ children }) => {
                 setNotes,
                 showAlert,
                 setShowAlert,
-                editNote,
-                setEditNote,
-                editTag,
-                setEditTag,
+                showAddNote,
+                setShowAddNote,
+                showEditNote,
+                setShowEditNote,
+                showEditTag,
+                setShowEditTag,
                 title,
                 setTitle,
                 desc,
                 setDesc,
-                color,
-                setColor,
+                selectedTag,
+                setSelectedTag,
+                handleAddNote,
             }}
         >
             {children}

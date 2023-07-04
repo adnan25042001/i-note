@@ -6,18 +6,18 @@ import NoteContext from "../context/notes/NoteContext";
 
 const EditTagPopup = () => {
     const context = useContext(NoteContext);
-    const { setEditTag, color } = context;
-    const [bgClr, setBgClr] = useState("#eeeeee");
+    const { setShowEditTag, selectedTag } = context;
+    const [bgClr, setBgClr] = useState("#7e7e7e40");
     return (
         <div className="edit-tag-container">
             <div className="glass-effect"></div>
             <div className="edit-tag" style={{ background: bgClr }}>
-                <MdClose onClick={() => setEditTag(false)} />
+                <MdClose onClick={() => setShowEditTag(false)} />
                 <div className="tags scrollbar">
                     {tags &&
                         tags.map((tag) => {
-                            if (tag.color === color) {
-                                setBgClr(tag.backgroundColor);
+                            if (tag.color === selectedTag.color) {
+                                setBgClr(tag.color + "40");
                             }
                             return (
                                 <div
@@ -26,7 +26,9 @@ const EditTagPopup = () => {
                                     style={{
                                         background: "white",
                                     }}
-                                    onClick={() => console.log(tag)}
+                                    onClick={() => {
+                                        setBgClr(tag.color + "40");
+                                    }}
                                     onMouseOver={(e) => {
                                         e.target.style.background = tag.color;
                                         e.target.style.color = tag.textColor;

@@ -1,4 +1,4 @@
-.edit-note-container {
+.add-note-container {
     position: fixed;
     display: flex;
     top: 0;
@@ -8,7 +8,7 @@
     z-index: 9;
 }
 
-.edit-note {
+.add-note {
     position: relative;
     width: 600px;
     min-height: 450px;
@@ -18,7 +18,7 @@
     border-radius: 12px;
 }
 
-.edit-note .note{
+.add-note .note {
     position: absolute;
     overflow: auto;
     top: 0;
@@ -32,7 +32,7 @@
     background: transparent;
 }
 
-.edit-note svg {
+.add-note svg {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -41,24 +41,24 @@
     z-index: 9;
 }
 
-.edit-note svg:hover {
+.add-note svg:hover {
     transform: scale(1.2);
 }
 
-.edit-note .line {
+.add-note .line {
     width: 100%;
     height: 1px;
     background-color: rgb(150, 150, 150);
     margin: 20px 0 15px 0;
 }
-.edit-note h4,
-.edit-note p {
+.add-note h4,
+.add-note p {
     background-color: transparent;
     outline: none;
     border: none;
 }
 
-.edit-note .bottom-buttons{
+.add-note .bottom-buttons {
     background: transparent;
     width: 100%;
     height: 60px;
@@ -66,38 +66,43 @@
     bottom: 0;
     right: 0;
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
-    padding: 24px;
+    padding: 0 24px;
     gap: 24px;
 }
 
-.edit-note .update-button{
+.add-note .tags{
+    position: relative;
+    overflow: auto;
+    display: flex;
+    height: auto;
+    width: 100%;
+    padding: 4px 0;
+    align-items: center;
+    gap: 8px;
+}
+
+.add-note .tag{
+    padding: 4px 16px;
+    border-radius: 12px;
+    font-size: 12px;
+    white-space: nowrap;
+    cursor: pointer;
+    width: 100%;
+}
+
+.add-note .add-button {
     border: 2px solid #0f5132;
     border-radius: 8px;
     padding: 4px 12px;
     background: #0f5132;
     color: white;
     font-size: 16px;
-    transition:  ease-in-out 0.3s;
+    transition: ease-in-out 0.3s;
 }
 
-.edit-note .update-button:hover{
-    background: white;
-    color: black;
-}
-
-.edit-note .delete-button{
-    border: 2px solid #842029;
-    border-radius: 8px;
-    padding: 4px 12px;
-    background: #842029;
-    color: white;
-    font-size: 16px;
-    transition:  ease-in-out 0.3s;
-}
-
-.edit-note .delete-button:hover{
+.edit-note .add-button:hover {
     background: white;
     color: black;
 }
