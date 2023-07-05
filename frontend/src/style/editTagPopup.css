@@ -5,7 +5,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: 9;
+    z-index: 99;
 }
 
 .edit-tag {
@@ -39,7 +39,7 @@
     right: 12px;
     font-size: 24px;
     transition: ease-in-out 0.3s;
-    z-index: 9;
+    z-index: 99;
 }
 
 .edit-tag svg:hover {
@@ -86,4 +86,16 @@
 .edit-tag .update-button:hover{
     background: #0f5132;
     color: white;
+}
+
+@media (max-width: 767px) {
+    .edit-note {
+        width: 80%;
+    }
+}
+
+@media (max-width: 520px) {
+    .edit-note {
+        width: 90%;
+    }
 }

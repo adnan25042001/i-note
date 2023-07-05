@@ -5,7 +5,10 @@ const Navbar = () => {
     const location = useLocation();
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+            <nav
+                className="sticky-top navbar navbar-expand-lg bg-dark navbar-dark"
+                style={{ zIndex: 9 }}
+            >
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">
                         Navbar

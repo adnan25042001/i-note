@@ -5,7 +5,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: 9;
+    z-index: 99;
 }
 
 .edit-note {
@@ -38,7 +38,7 @@
     right: 12px;
     font-size: 24px;
     transition: ease-in-out 0.3s;
-    z-index: 9;
+    z-index: 99;
 }
 
 .edit-note svg:hover {
@@ -66,7 +66,7 @@
     bottom: 0;
     right: 0;
     display: flex;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
     padding: 24px;
     gap: 24px;
@@ -75,10 +75,10 @@
 .edit-note .update-button{
     border: 2px solid #0f5132;
     border-radius: 8px;
-    padding: 4px 12px;
+    padding: 4px 20px;
     background: #0f5132;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     transition:  ease-in-out 0.3s;
 }
 
@@ -90,14 +90,26 @@
 .edit-note .delete-button{
     border: 2px solid #842029;
     border-radius: 8px;
-    padding: 4px 12px;
+    padding: 4px 20px;
     background: #842029;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     transition:  ease-in-out 0.3s;
 }
 
 .edit-note .delete-button:hover{
     background: white;
     color: black;
+}
+
+@media (max-width: 767px) {
+    .edit-note {
+        width: 80%;
+    }
+}
+
+@media (max-width: 520px) {
+    .edit-note {
+        width: 90%;
+    }
 }

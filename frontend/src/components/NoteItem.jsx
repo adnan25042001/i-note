@@ -5,7 +5,8 @@ import NoteContext from "../context/notes/NoteContext";
 const NoteItem = (props) => {
     const { note } = props;
     const context = useContext(NoteContext);
-    const { setEditNote, setEditTag, setTitle, setDesc } = context;
+    const { setShowEditNote, setShowEditTag, setUpdateNote, updateNote } =
+        context;
     return (
         <div
             className="note-card"
@@ -17,9 +18,9 @@ const NoteItem = (props) => {
         >
             <div
                 onClick={() => {
-                    setTitle(note.title);
-                    setDesc(note.description);
-                    setEditNote(true);
+                    setUpdateNote(note);
+                    console.log(updateNote);
+                    setShowEditNote(true);
                 }}
             >
                 <h5>{note.title}</h5>
@@ -34,7 +35,8 @@ const NoteItem = (props) => {
                         }`,
                     }}
                     onClick={() => {
-                        setEditTag(true);
+                        setUpdateNote(note);
+                        setShowEditTag(true);
                     }}
                 ></span>
             </div>

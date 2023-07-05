@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
-import "../style/editTagPopup.css";
+import "../../style/editTagPopup.css";
 import { MdClose } from "react-icons/md";
-import { tags } from "../utils/tags";
-import NoteContext from "../context/notes/NoteContext";
+import { tags } from "../../utils/tags";
+import NoteContext from "../../context/notes/NoteContext";
 
 const EditTagPopup = () => {
     const context = useContext(NoteContext);
-    const { setShowEditTag, selectedTag } = context;
-    const [bgClr, setBgClr] = useState("#7e7e7e40");
+    const { setShowEditTag, updateNote, setUpdateNote } = context;
+    let color = updateNote.color + "40";
+    const [bgClr, setBgClr] = useState(color || "#7e7e7e40");
     return (
         <div className="edit-tag-container">
             <div className="glass-effect"></div>
@@ -16,9 +17,6 @@ const EditTagPopup = () => {
                 <div className="tags scrollbar">
                     {tags &&
                         tags.map((tag) => {
-                            if (tag.color === selectedTag.color) {
-                                setBgClr(tag.color + "40");
-                            }
                             return (
                                 <div
                                     className="tag"
@@ -28,6 +26,11 @@ const EditTagPopup = () => {
                                     }}
                                     onClick={() => {
                                         setBgClr(tag.color + "40");
+                                        setUpdateNote({
+                                            ...updateNote,
+                                            tag: tag.name,
+                                            color: tag.color + "40",
+                                        });
                                     }}
                                     onMouseOver={(e) => {
                                         e.target.style.background = tag.color;
@@ -40,7 +43,12 @@ const EditTagPopup = () => {
                         })}
                 </div>
                 <div className="bottom-buttons">
-                    <button className="update-button" onClick={() => {}}>
+                    <button
+                        className="update-button"
+                        onClick={() => {
+                            console.log(updateNote);
+                        }}
+                    >
                         Update
                     </button>
                 </div>

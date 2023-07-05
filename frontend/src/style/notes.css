@@ -1,4 +1,35 @@
-.notes-container{
+.notes-container {
     columns: 4;
     column-gap: 15px;
+}
+
+.add-new-note {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 12px;
+    break-inside: avoid;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+@media (max-width: 991px) {
+    .notes-container {
+        columns: 3;
+    }
+}
+
+@media (max-width: 767px) {
+    .notes-container {
+        columns: 2;
+    }
+}
+
+@media (max-width: 420px) {
+    .notes-container {
+        columns: 1;
+    }
 }

@@ -32,12 +32,14 @@ router.post(
         }
 
         try {
-            const { title, description, tag } = req.body;
+            const { title, description, tag, color } = req.body;
 
             const note = new Note({
                 title,
                 description,
                 tag,
+                color,
+                updatedDate: new Date(),
                 user: req.user.id,
             });
             const savedNote = await note.save();
@@ -50,13 +52,14 @@ router.post(
 
 router.put("/update/:id", fetchUser, async (req, res) => {
     try {
-        const { title, description, tag } = req.body;
+        const { title, description, tag, color } = req.body;
         const newNote = {};
         if (title) newNote.title = title;
         if (description) newNote.description = description;
         if (tag) newNote.tag = tag;
+        if (color) newNote.color = color;
+        newNote.updatedDate = new Date();
         let note = await Note.findById(req.params.id);
-        console.log(note)
         if (!note) res.status(404).send("Not Found");
         if (note.user.toString() !== req.user.id) {
             res.status(401).send("Permission denied");
@@ -80,7 +83,7 @@ router.delete("/delete/:id", fetchUser, async (req, res) => {
             res.status(401).send("Permission denied");
         }
         note = await Note.findByIdAndDelete(req.params.id);
-        res.json({"Success" : "Note has been deleted", note: note})
+        res.json({ Success: "Note has been deleted", note: note });
     } catch (error) {
         res.status(500).send("Internal server error");
     }

@@ -5,7 +5,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: 9;
+    z-index: 99;
 }
 
 .add-note {
@@ -38,7 +38,7 @@
     right: 12px;
     font-size: 24px;
     transition: ease-in-out 0.3s;
-    z-index: 9;
+    z-index: 99;
 }
 
 .add-note svg:hover {
@@ -72,7 +72,7 @@
     gap: 24px;
 }
 
-.add-note .tags{
+.add-note .tags {
     position: relative;
     overflow: auto;
     display: flex;
@@ -83,7 +83,7 @@
     gap: 8px;
 }
 
-.add-note .tag{
+.add-note .tag {
     padding: 4px 16px;
     border-radius: 12px;
     font-size: 12px;
@@ -95,14 +95,35 @@
 .add-note .add-button {
     border: 2px solid #0f5132;
     border-radius: 8px;
-    padding: 4px 12px;
+    padding: 4px 20px;
     background: #0f5132;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     transition: ease-in-out 0.3s;
 }
 
 .edit-note .add-button:hover {
     background: white;
     color: black;
+}
+
+@media (max-width: 767px) {
+    .add-note {
+        width: 80%;
+    }
+}
+
+@media (max-width: 520px) {
+    .add-note {
+        width: 90%;
+    }
+    .add-note .note {
+        height: calc(100% - 120px);
+    }
+    .add-note .bottom-buttons {
+        padding: 12px 20px;
+        height: 120px;
+        flex-direction: column;
+        gap: 12px;
+    }
 }

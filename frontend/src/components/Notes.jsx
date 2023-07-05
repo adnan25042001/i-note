@@ -6,17 +6,26 @@ import "../style/notes.css";
 const Notes = () => {
     const context = useContext(NoteContext);
     const { notes, setShowAddNote } = context;
+    if (notes) {
+        notes.sort((a, b) => {
+            let d1 = a.updatedDate || a.createdDate;
+            let d2 = b.updatedDate || b.createdDate;
+
+            return new Date(d2) - new Date(d1);
+        });
+    }
     return (
-        <div className="container">
-            <h2 className="text-center my-4">Your Notes</h2>
+        <div className="container mt-5">
             <div className="notes-container">
-                <div className="note-card" style={{ background: "#6d6d6d21" }}>
-                    <div
-                        onClick={() => {
-                            setShowAddNote(true);
-                        }}
-                    >
-                        <h5 className="text-center">Add New Note</h5>
+                <div
+                    className="add-new-note"
+                    style={{ background: "#6d6d6d21" }}
+                    onClick={() => {
+                        setShowAddNote(true);
+                    }}
+                >
+                    <div>
+                        <h5>Add Note</h5>
                     </div>
                 </div>
                 {notes &&

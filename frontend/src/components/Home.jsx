@@ -1,16 +1,16 @@
 import React, { useContext, useState } from "react";
 import Notes from "./Notes";
 import Alert from "./Alert";
-import EditNotePopup from "./EditNotePopup";
-import EditTagPopup from "./EditTagPopup";
 import NoteContext from "../context/notes/NoteContext";
-import AddNotePopup from "./AddNotePopup";
+import AddNotePopup from "./popup/AddNotePopup";
+import EditNotePopup from "./popup/EditNotePopup";
+import EditTagPopup from "./popup/EditTagPopup";
 
 const Home = () => {
     const context = useContext(NoteContext);
     const { showAddNote, showEditTag, showEditNote } = context;
     return (
-        <div className="container">
+        <div className="container mb-3 scrollbar">
             <Alert />
             {showAddNote && <AddNotePopup />}
             {showEditNote && <EditNotePopup />}

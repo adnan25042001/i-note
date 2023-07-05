@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import NoteContext from "../context/notes/NoteContext";
+import NoteContext from "../../context/notes/NoteContext";
 import { MdClose } from "react-icons/md";
-import { tags } from "../utils/tags";
-import "../style/addNotePopup.css";
+import { tags } from "../../utils/tags";
+import "../../style/addNotePopup.css";
 
 const AddNotePopup = () => {
     const context = useContext(NoteContext);
@@ -16,10 +16,7 @@ const AddNotePopup = () => {
     const [bgClr, setBgClr] = useState("#7e7e7e40");
 
     const onTitleKeyup = (event) => {
-        if (event.target.innerText.trim().toLowerCase() !== "title") {
-            console.log(event.target.innerText.trim());
-            setNote({ ...note, title: event.target.innerText });
-        }
+        setNote({ ...note, title: event.target.innerText.trim() });
     };
 
     const onTitleKeydown = (event) => {
@@ -29,18 +26,15 @@ const AddNotePopup = () => {
     };
 
     const onDescKeyup = (event) => {
-        if (event.target.innerText.trim().toLowerCase() !== "description") {
-            setNote({ ...note, description: event.target.innerText });
-        }
+        setNote({ ...note, description: event.target.innerText.trim() });
     };
 
     const handleChangeTag = (tag, color) => {
-        console.log(tag, color);
         setNote({ ...note, tag, color });
     };
 
     return (
-        <div className="add-note-container">
+        <div className="add-note-container scrollbar">
             <div className="glass-effect"></div>
             <div className="add-note" style={{ background: bgClr }}>
                 <MdClose onClick={() => setShowAddNote(false)} />
