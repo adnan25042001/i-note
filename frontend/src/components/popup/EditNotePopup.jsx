@@ -5,9 +5,12 @@ import NoteContext from "../../context/notes/NoteContext";
 
 const EditNotePopup = () => {
     const context = useContext(NoteContext);
-    const { setShowEditNote, updateNote, setUpdateNote } = context;
+    const { setShowEditNote, updateNote, setUpdateNote, handleUpdateNote } =
+        context;
     const titleRef = useRef(updateNote.title);
     const descRef = useRef(updateNote.description);
+
+    console.log(updateNote);
 
     const titleKeyup = (event) => {
         console.log(event.key);
@@ -31,7 +34,7 @@ const EditNotePopup = () => {
             <div className="glass-effect"></div>
             <div
                 className="edit-note"
-                style={{ background: `${updateNote?.color}40` }}
+                style={{ background: `${updateNote?.color}80` }}
             >
                 <MdClose onClick={() => setShowEditNote(false)} />
                 <div className="note scrollbar">
@@ -52,6 +55,7 @@ const EditNotePopup = () => {
                         className="update-button"
                         onClick={() => {
                             console.log(updateNote);
+                            handleUpdateNote();
                         }}
                     >
                         Update

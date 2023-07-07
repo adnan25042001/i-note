@@ -39,6 +39,7 @@
     font-size: 24px;
     transition: ease-in-out 0.3s;
     z-index: 99;
+    cursor: pointer;
 }
 
 .add-note svg:hover {

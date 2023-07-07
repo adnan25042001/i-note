@@ -4,7 +4,7 @@
 }
 
 .add-new-note {
-    height: 100px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,6 +14,10 @@
     margin-bottom: 15px;
     border-radius: 12px;
     cursor: pointer;
+}
+
+.add-new-note svg{
+    font-size: 46px;
 }
 
 @media (max-width: 991px) {

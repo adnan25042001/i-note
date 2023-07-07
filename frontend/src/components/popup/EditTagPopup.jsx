@@ -7,8 +7,8 @@ import NoteContext from "../../context/notes/NoteContext";
 const EditTagPopup = () => {
     const context = useContext(NoteContext);
     const { setShowEditTag, updateNote, setUpdateNote } = context;
-    let color = updateNote.color + "40";
-    const [bgClr, setBgClr] = useState(color || "#7e7e7e40");
+    let color = updateNote.color + "80";
+    const [bgClr, setBgClr] = useState(color || "#7e7e7e80");
     return (
         <div className="edit-tag-container">
             <div className="glass-effect"></div>
@@ -25,11 +25,11 @@ const EditTagPopup = () => {
                                         background: "white",
                                     }}
                                     onClick={() => {
-                                        setBgClr(tag.color + "40");
+                                        setBgClr(tag.color + "80");
                                         setUpdateNote({
                                             ...updateNote,
                                             tag: tag.name,
-                                            color: tag.color + "40",
+                                            color: tag.color + "80",
                                         });
                                     }}
                                     onMouseOver={(e) => {

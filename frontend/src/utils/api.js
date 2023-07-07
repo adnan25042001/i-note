@@ -1,51 +1,59 @@
 const url = process.env.REACT_APP_URL;
 
 export const getAllNotes = () => {
-    fetch(`${url}/api/notes/getall`, {
+    return fetch(`${url}/api/notes/getall`, {
         method: "GET",
         headers: {
-            // "Content-Type": "application/json",
             "auth-token": process.env.REACT_APP_AUTH_TOKEN,
         },
-    }).then((data) => {
-        return data.json();
-    });
+    })
+        .then((data) => {
+            return data.json();
+        })
+        .catch((error) => console.log(error));
 };
 
 export const addNote = (note) => {
-    fetch(`${url}/api/notes/add`, {
+    return fetch(`${url}/api/notes/add`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             "auth-token": process.env.REACT_APP_AUTH_TOKEN,
         },
         body: JSON.stringify(note),
-    }).then((data) => {
-        return data.json();
-    });
+    })
+        .then((data) => {
+            return data.json();
+        })
+        .catch((error) => console.log(error));
 };
 
-export const updataNote = (note) => {
-    fetch(`${url}/api/notes/add`, {
+export const updateUserNote = (note) => {
+    console.log(note._id);
+    return fetch(`${url}/update/${note._id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
             "auth-token": process.env.REACT_APP_AUTH_TOKEN,
         },
         body: JSON.stringify(note),
-    }).then((data) => {
-        return data.json();
-    });
+    })
+        .then((data) => {
+            return data.json();
+        })
+        .catch((error) => console.log(error));
 };
 
-export const deleteNote = (id) => {
-    fetch(`${url}/api/notes/delete/${id}`, {
-        method: "PUT",
+export const deleteUserNote = (id) => {
+    return fetch(`${url}/api/notes/delete/${id}`, {
+        method: "DELETE",
         headers: {
             "Content-Type": "application/json",
             "auth-token": process.env.REACT_APP_AUTH_TOKEN,
         },
-    }).then((data) => {
-        return data.json();
-    });
+    })
+        .then((data) => {
+            return data.json();
+        })
+        .catch((error) => console.log(error));
 };

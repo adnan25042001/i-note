@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import NoteContext from "./NoteContext";
-import { getAllNotes } from "../../utils/api";
+import {
+    addNote,
+    getAllNotes,
+    updateUserNote,
+} from "../../utils/api";
 
 const NoteState = ({ children }) => {
     const [theme, setTheme] = useState("dark");
@@ -20,8 +24,17 @@ const NoteState = ({ children }) => {
         handleGetAllNotes();
     }, []);
 
-    const handleAddNote = (note) => {
-        console.log(note, "Hello");
+    const handleAddNote = async (note) => {
+        await addNote(note);
+    };
+
+    const handleUpdateNote = () => {
+        console.log(updateNote);
+        // updateUserNote(updateNote)
+        updateUserNote(updateNote).then((data) => {
+            console.log(data);
+            setUpdateNote(null);
+        });
     };
 
     return (
@@ -42,6 +55,7 @@ const NoteState = ({ children }) => {
                 updateNote,
                 setUpdateNote,
                 handleAddNote,
+                handleUpdateNote,
             }}
         >
             {children}

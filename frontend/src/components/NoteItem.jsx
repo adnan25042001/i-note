@@ -5,21 +5,21 @@ import NoteContext from "../context/notes/NoteContext";
 const NoteItem = (props) => {
     const { note } = props;
     const context = useContext(NoteContext);
-    const { setShowEditNote, setShowEditTag, setUpdateNote, updateNote } =
+    const { setShowEditNote, setShowEditTag, updateNote, setUpdateNote } =
         context;
     return (
         <div
             className="note-card"
             style={{
                 backgroundColor: `${
-                    note.color ? note.color + "40" : "#7e7e7e40"
+                    note.color ? note.color + "80" : "#7e7e7e80"
                 }`,
             }}
         >
             <div
                 onClick={() => {
+                    console.log(note);
                     setUpdateNote(note);
-                    console.log(updateNote);
                     setShowEditNote(true);
                 }}
             >

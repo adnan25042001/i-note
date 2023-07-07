@@ -13,7 +13,7 @@ const AddNotePopup = () => {
         tag: "General",
         color: "#7e7e7e",
     });
-    const [bgClr, setBgClr] = useState("#7e7e7e40");
+    const [bgClr, setBgClr] = useState("#7e7e7e80");
 
     const onTitleKeyup = (event) => {
         setNote({ ...note, title: event.target.innerText.trim() });
@@ -64,7 +64,7 @@ const AddNotePopup = () => {
                                             color: tag.textColor,
                                         }}
                                         onClick={() => {
-                                            setBgClr(tag.color + "40");
+                                            setBgClr(tag.color + "80");
                                             handleChangeTag(
                                                 tag.name,
                                                 tag.color

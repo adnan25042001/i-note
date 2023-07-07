@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import NoteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 import "../style/notes.css";
+import { AiOutlinePlus } from "react-icons/ai";
 
 const Notes = () => {
     const context = useContext(NoteContext);
     const { notes, setShowAddNote } = context;
+    console.log(notes);
     if (notes) {
         notes.sort((a, b) => {
             let d1 = a.updatedDate || a.createdDate;
@@ -19,13 +21,13 @@ const Notes = () => {
             <div className="notes-container">
                 <div
                     className="add-new-note"
-                    style={{ background: "#6d6d6d21" }}
+                    style={{ background: "#6d6d6d40" }}
                     onClick={() => {
                         setShowAddNote(true);
                     }}
                 >
                     <div>
-                        <h5>Add Note</h5>
+                        <AiOutlinePlus />
                     </div>
                 </div>
                 {notes &&
