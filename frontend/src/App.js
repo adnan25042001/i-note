@@ -3,18 +3,23 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import NoteState from "./context/notes/NoteState";
 import About from "./components/About";
+import Login from "./components/Login";
+import AuthState from "./context/auth/AuthState";
 
 function App() {
     return (
         <>
             <BrowserRouter>
-                <NoteState>
-                    <Navbar />
+                <AuthState>
+                    <NoteState>
+                        <Login />
+                        {/* <Navbar />
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about" element={<About />} />
-                    </Routes>
-                </NoteState>
+                    </Routes> */}
+                    </NoteState>
+                </AuthState>
             </BrowserRouter>
         </>
     );

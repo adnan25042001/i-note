@@ -1,0 +1,70 @@
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/joanna-kosinska-7ACuHoezUYk-unsplash.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login-form {
+    width: 450px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    backdrop-filter: blur(16px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 40px 25px;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex-shrink: 0;
+}
+
+input {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.04);
+    color: white;
+    outline: 2px solid transparent;
+    transition: ease-in-out 0.3s;
+}
+
+::placeholder {
+    color: #e9e9e9;
+}
+
+input:focus {
+    outline: 2px solid #0001;
+}
+
+input:hover {
+    outline: 2px solid #0001;
+}
+
+#submit{
+    background-image: linear-gradient(to right, #8d2de2, #e22d97);
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#submit:hover{
+    background-image: linear-gradient(to right, #e22d97, #8d2de2);
+    outline: 2px solid #0001;
+}

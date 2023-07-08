@@ -27,6 +27,7 @@ const NoteState = ({ children }) => {
 
     useEffect(() => {
         handleGetAllNotes();
+        // eslint-disable-next-line
     }, []);
 
     const handleAddNote = (note) => {
