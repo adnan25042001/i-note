@@ -5,6 +5,7 @@ import NoteState from "./context/notes/NoteState";
 import About from "./components/About";
 import Login from "./components/Login";
 import AuthState from "./context/auth/AuthState";
+import Signup from "./components/Signup";
 
 function App() {
     return (
@@ -12,12 +13,26 @@ function App() {
             <BrowserRouter>
                 <AuthState>
                     <NoteState>
-                        <Login />
-                        {/* <Navbar />
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/about" element={<About />} />
-                    </Routes> */}
+                        <Routes>
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/signup" element={<Signup />} />
+                            <Route
+                                path="/"
+                                element={
+                                    <>
+                                        <Navbar /> <Home />
+                                    </>
+                                }
+                            />
+                            <Route
+                                path="/about"
+                                element={
+                                    <>
+                                        <Navbar /> <About />
+                                    </>
+                                }
+                            />
+                        </Routes>
                     </NoteState>
                 </AuthState>
             </BrowserRouter>

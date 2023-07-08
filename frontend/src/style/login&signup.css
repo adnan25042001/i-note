@@ -1,4 +1,4 @@
-.login-container {
+.login-container, .signup-container {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -9,7 +9,7 @@
     background-size: cover;
 }
 
-.login-form {
+.form {
     width: 450px;
     background-color: rgba(255, 255, 255, 0.03);
     border-radius: 12px;
@@ -67,4 +67,17 @@ input:hover {
 #submit:hover{
     background-image: linear-gradient(to right, #e22d97, #8d2de2);
     outline: 2px solid #0001;
+}
+
+.form>div{
+    margin-top: -15px;
+}
+
+.form>div>a{
+    color: gray;
+    text-underline-offset: 2px;
+}
+
+.form>div>a:hover{
+    color: #2de2d3;
 }
