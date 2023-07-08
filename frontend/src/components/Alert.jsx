@@ -3,19 +3,35 @@ import { IoClose } from "react-icons/io5";
 import "../style/alert.css";
 import NoteContext from "../context/notes/NoteContext";
 
-const Alert = (props) => {
-    const { type, message } = props;
+const Alert = () => {
     const context = useContext(NoteContext);
     const { showAlert, setShowAlert } = context;
     useEffect(() => {
         setTimeout(() => {
-            setShowAlert(false)
-        }, 5000)
-    },[showAlert])
+            setShowAlert({
+                show: false,
+                type: "",
+                message: "",
+            });
+        }, 5000);
+    }, [showAlert]);
     return (
-        <div className={`alert ${type ? type : "success"} ${showAlert ? "" : "hide"}`}>
-            <IoClose className="closebtn" onClick={() => setShowAlert(false)}/>
-            {message || "Success"}
+        <div
+            className={`alert ${showAlert.type ? showAlert.type : "success"} ${
+                showAlert?.show ? "" : "hide"
+            }`}
+        >
+            <IoClose
+                className="closebtn"
+                onClick={() =>
+                    setShowAlert({
+                        show: false,
+                        type: "",
+                        message: "",
+                    })
+                }
+            />
+            {showAlert?.message || "Success"}
         </div>
     );
 };

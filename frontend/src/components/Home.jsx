@@ -8,10 +8,10 @@ import EditTagPopup from "./popup/EditTagPopup";
 
 const Home = () => {
     const context = useContext(NoteContext);
-    const { showAddNote, showEditTag, showEditNote } = context;
+    const { showAddNote, showEditTag, showEditNote, showAlert } = context;
     return (
         <div className="container mb-3 scrollbar">
-            <Alert />
+            {showAlert?.show && <Alert />}
             {showAddNote && <AddNotePopup />}
             {showEditNote && <EditNotePopup />}
             {showEditTag && <EditTagPopup />}

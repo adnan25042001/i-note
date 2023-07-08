@@ -6,7 +6,8 @@ import NoteContext from "../../context/notes/NoteContext";
 
 const EditTagPopup = () => {
     const context = useContext(NoteContext);
-    const { setShowEditTag, updateNote, setUpdateNote } = context;
+    const { setShowEditTag, updateNote, setUpdateNote, handleUpdateNote } =
+        context;
     let color = updateNote.color + "80";
     const [bgClr, setBgClr] = useState(color || "#7e7e7e80");
     return (
@@ -29,7 +30,7 @@ const EditTagPopup = () => {
                                         setUpdateNote({
                                             ...updateNote,
                                             tag: tag.name,
-                                            color: tag.color + "80",
+                                            color: tag.color,
                                         });
                                     }}
                                     onMouseOver={(e) => {
@@ -46,7 +47,7 @@ const EditTagPopup = () => {
                     <button
                         className="update-button"
                         onClick={() => {
-                            console.log(updateNote);
+                            handleUpdateNote();
                         }}
                     >
                         Update

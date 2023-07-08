@@ -5,8 +5,13 @@ import NoteContext from "../../context/notes/NoteContext";
 
 const EditNotePopup = () => {
     const context = useContext(NoteContext);
-    const { setShowEditNote, updateNote, setUpdateNote, handleUpdateNote } =
-        context;
+    const {
+        setShowEditNote,
+        updateNote,
+        setUpdateNote,
+        handleUpdateNote,
+        handleDeleteNote,
+    } = context;
     const titleRef = useRef(updateNote.title);
     const descRef = useRef(updateNote.description);
 
@@ -54,13 +59,17 @@ const EditNotePopup = () => {
                     <button
                         className="update-button"
                         onClick={() => {
-                            console.log(updateNote);
                             handleUpdateNote();
                         }}
                     >
                         Update
                     </button>
-                    <button className="delete-button" onClick={() => {}}>
+                    <button
+                        className="delete-button"
+                        onClick={() => {
+                            handleDeleteNote();
+                        }}
+                    >
                         Delete
                     </button>
                 </div>

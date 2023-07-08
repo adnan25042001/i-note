@@ -29,8 +29,7 @@ export const addNote = (note) => {
 };
 
 export const updateUserNote = (note) => {
-    console.log(note._id);
-    return fetch(`${url}/update/${note._id}`, {
+    return fetch(`${url}/api/notes/update/${note._id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -48,7 +47,7 @@ export const deleteUserNote = (id) => {
     return fetch(`${url}/api/notes/delete/${id}`, {
         method: "DELETE",
         headers: {
-            "Content-Type": "application/json",
+            // "Content-Type": "application/json",
             "auth-token": process.env.REACT_APP_AUTH_TOKEN,
         },
     })

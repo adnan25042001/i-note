@@ -52,7 +52,6 @@ router.post(
 
 router.put("/update/:id", fetchUser, async (req, res) => {
     try {
-        console.log(req.body);
         const { title, description, tag, color } = req.body;
         const newNote = {};
         if (title) newNote.title = title;

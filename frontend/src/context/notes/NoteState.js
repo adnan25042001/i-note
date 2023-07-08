@@ -2,13 +2,18 @@ import React, { useEffect, useState } from "react";
 import NoteContext from "./NoteContext";
 import {
     addNote,
+    deleteUserNote,
     getAllNotes,
     updateUserNote,
 } from "../../utils/api";
 
 const NoteState = ({ children }) => {
     const [theme, setTheme] = useState("dark");
-    const [showAlert, setShowAlert] = useState(true);
+    const [showAlert, setShowAlert] = useState({
+        show: false,
+        type: "success",
+        message: "This is message",
+    });
     const [showAddNote, setShowAddNote] = useState(false);
     const [showEditNote, setShowEditNote] = useState(false);
     const [showEditTag, setShowEditTag] = useState(false);
@@ -24,16 +29,42 @@ const NoteState = ({ children }) => {
         handleGetAllNotes();
     }, []);
 
-    const handleAddNote = async (note) => {
-        await addNote(note);
+    const handleAddNote = (note) => {
+        addNote(note).then(() => {
+            setShowAddNote(false);
+            setShowAlert({
+                show: true,
+                type: "success",
+                message: "Note Added Successfully",
+            });
+            handleGetAllNotes();
+        });
     };
 
     const handleUpdateNote = () => {
-        console.log(updateNote);
-        // updateUserNote(updateNote)
         updateUserNote(updateNote).then((data) => {
-            console.log(data);
+            setShowEditNote(false);
+            setShowEditTag(false);
             setUpdateNote(null);
+            setShowAlert({
+                show: true,
+                type: "primary",
+                message: "Note Updated Successfully",
+            });
+            handleGetAllNotes();
+        });
+    };
+
+    const handleDeleteNote = () => {
+        deleteUserNote(updateNote._id).then((data) => {
+            setShowEditNote(false);
+            setUpdateNote(null);
+            setShowAlert({
+                show: true,
+                type: "error",
+                message: "Note Deleted Successfully",
+            });
+            handleGetAllNotes();
         });
     };
 
@@ -56,6 +87,7 @@ const NoteState = ({ children }) => {
                 setUpdateNote,
                 handleAddNote,
                 handleUpdateNote,
+                handleDeleteNote,
             }}
         >
             {children}
