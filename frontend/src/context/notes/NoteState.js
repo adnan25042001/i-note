@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import NoteContext from "./NoteContext";
 import {
     addNote,
@@ -6,8 +6,12 @@ import {
     getAllNotes,
     updateUserNote,
 } from "../../utils/api";
+import AuthContext from "../auth/AuthContext";
 
 const NoteState = ({ children }) => {
+    const authContext = useContext(AuthContext);
+    const { token } = authContext;
+
     const [showAlert, setShowAlert] = useState({
         show: false,
         type: "success",
@@ -20,17 +24,19 @@ const NoteState = ({ children }) => {
     const [notes, setNotes] = useState(null);
 
     const handleGetAllNotes = async () => {
-        const data = await getAllNotes();
+        const data = await getAllNotes(token);
         setNotes(data);
     };
 
     useEffect(() => {
-        handleGetAllNotes();
+        if (token) {
+            handleGetAllNotes();
+        }
         // eslint-disable-next-line
-    }, []);
+    }, [token]);
 
     const handleAddNote = (note) => {
-        addNote(note).then(() => {
+        addNote(note, token).then(() => {
             setShowAddNote(false);
             setShowAlert({
                 show: true,
@@ -42,7 +48,7 @@ const NoteState = ({ children }) => {
     };
 
     const handleUpdateNote = () => {
-        updateUserNote(updateNote).then((data) => {
+        updateUserNote(updateNote, token).then((data) => {
             setShowEditNote(false);
             setShowEditTag(false);
             setUpdateNote(null);
@@ -56,7 +62,7 @@ const NoteState = ({ children }) => {
     };
 
     const handleDeleteNote = () => {
-        deleteUserNote(updateNote._id).then((data) => {
+        deleteUserNote(updateNote._id, token).then((data) => {
             setShowEditNote(false);
             setUpdateNote(null);
             setShowAlert({

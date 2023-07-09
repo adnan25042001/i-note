@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import AuthContext from "../context/auth/AuthContext";
 
 const Navbar = () => {
+    const authContext = useContext(AuthContext);
+    const { token,setToken } = authContext;
+    console.log(token)
+
     const location = useLocation();
     return (
         <>
@@ -55,22 +60,16 @@ const Navbar = () => {
                                 </Link>
                             </li>
                         </ul>
-                        {location.pathname === "/" && (
-                            <form className="d-flex" role="search">
-                                <input
-                                    className="form-control me-2"
-                                    type="search"
-                                    placeholder="Search"
-                                    aria-label="Search"
-                                />
-                                <button
-                                    className="btn btn-outline-success"
-                                    type="submit"
-                                >
-                                    Search
-                                </button>
-                            </form>
-                        )}
+
+                        <button
+                            className="btn btn-outline-danger"
+                            onClick={() => {
+                                localStorage.setItem("token", null);
+                                setToken(null);
+                            }}
+                        >
+                            Logout
+                        </button>
                     </div>
                 </div>
             </nav>

@@ -1,10 +1,10 @@
 const url = process.env.REACT_APP_URL;
 
-export const getAllNotes = () => {
+export const getAllNotes = (token) => {
     return fetch(`${url}/api/notes/getall`, {
         method: "GET",
         headers: {
-            "auth-token": process.env.REACT_APP_AUTH_TOKEN,
+            "auth-token": token,
         },
     })
         .then((data) => {
@@ -13,12 +13,12 @@ export const getAllNotes = () => {
         .catch((error) => console.log(error));
 };
 
-export const addNote = (note) => {
+export const addNote = (note, token) => {
     return fetch(`${url}/api/notes/add`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "auth-token": process.env.REACT_APP_AUTH_TOKEN,
+            "auth-token": token,
         },
         body: JSON.stringify(note),
     })
@@ -28,12 +28,12 @@ export const addNote = (note) => {
         .catch((error) => console.log(error));
 };
 
-export const updateUserNote = (note) => {
+export const updateUserNote = (note, token) => {
     return fetch(`${url}/api/notes/update/${note._id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
-            "auth-token": process.env.REACT_APP_AUTH_TOKEN,
+            "auth-token": token,
         },
         body: JSON.stringify(note),
     })
@@ -43,12 +43,12 @@ export const updateUserNote = (note) => {
         .catch((error) => console.log(error));
 };
 
-export const deleteUserNote = (id) => {
+export const deleteUserNote = (id, token) => {
     return fetch(`${url}/api/notes/delete/${id}`, {
         method: "DELETE",
         headers: {
             // "Content-Type": "application/json",
-            "auth-token": process.env.REACT_APP_AUTH_TOKEN,
+            "auth-token": token,
         },
     })
         .then((data) => {
