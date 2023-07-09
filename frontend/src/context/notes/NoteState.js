@@ -8,7 +8,6 @@ import {
 } from "../../utils/api";
 
 const NoteState = ({ children }) => {
-    const [theme, setTheme] = useState("dark");
     const [showAlert, setShowAlert] = useState({
         show: false,
         type: "success",
@@ -72,8 +71,6 @@ const NoteState = ({ children }) => {
     return (
         <NoteContext.Provider
             value={{
-                theme,
-                setTheme,
                 notes,
                 setNotes,
                 showAlert,

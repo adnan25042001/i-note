@@ -36,7 +36,7 @@ const AddNotePopup = () => {
     return (
         <div className="add-note-container scrollbar">
             <div className="glass-effect"></div>
-            <div className="add-note" style={{ background: bgClr }}>
+            <div className="add-note" style={{ backgroundColor: bgClr }}>
                 <MdClose onClick={() => setShowAddNote(false)} />
                 <div className="note scrollbar">
                     <h4

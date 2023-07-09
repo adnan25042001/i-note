@@ -21,7 +21,9 @@ router.post(
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res
+                .status(400)
+                .json({ success: false, errors: errors.array() });
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -30,9 +32,10 @@ router.post(
         User.findOne({ email: req.body.email })
             .then((existingUser) => {
                 if (existingUser) {
-                    return res
-                        .status(400)
-                        .json({ error: "User already exists with this email" });
+                    return res.status(400).json({
+                        success: false,
+                        error: "User already exists with this email",
+                    });
                 }
 
                 const newUser = new User({
@@ -51,18 +54,25 @@ router.post(
                         };
                         const authtoken = jwt.sign(data, JWT_SECRET);
                         res.json({
+                            success: true,
                             authtoken: authtoken,
                             timeStamp: new Date(),
                         });
                     })
                     .catch((error) => {
                         console.error(error);
-                        res.status(500).json("Failed to create user");
+                        res.status(500).json({
+                            success: false,
+                            error: "Failed to create user",
+                        });
                     });
             })
             .catch((error) => {
                 console.error(error);
-                res.status(500).json("An error occurred");
+                res.status(500).json({
+                    success: false,
+                    error: "An error occurred",
+                });
             });
     }
 );
@@ -78,15 +88,18 @@ router.post(
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res
+                .status(400)
+                .json({ success: false, errors: errors.array() });
         }
 
         User.findOne({ email: req.body.email })
             .then((existingUser) => {
                 if (!existingUser) {
-                    return res
-                        .status(400)
-                        .json({ error: "Wrong email or password!" });
+                    return res.status(400).json({
+                        success: false,
+                        error: "Wrong email or password!",
+                    });
                 }
 
                 bcrypt
@@ -105,18 +118,25 @@ router.post(
                         };
                         const authtoken = jwt.sign(data, JWT_SECRET);
                         res.json({
+                            success: true,
                             authtoken: authtoken,
                             timeStamp: new Date(),
                         });
                     })
                     .catch((error) => {
                         console.error(error);
-                        res.status(500).json("An error occurred");
+                        res.status(500).json({
+                            success: false,
+                            error: "An error occurred",
+                        });
                     });
             })
             .catch((error) => {
                 console.error(error);
-                res.status(500).json("An error occurred");
+                res.status(500).json({
+                    success: false,
+                    error: "An error occurred",
+                });
             });
     }
 );
@@ -125,9 +145,12 @@ router.post("/getuser", fetchUser, async (req, res) => {
     try {
         const userId = req.user.id;
         const user = await User.findById(userId).select("-password");
-        res.send(user);
+        res.send({ success: true, user });
     } catch (error) {
-        res.status(500).send("Internal server error");
+        res.status(500).send({
+            success: false,
+            error: "Internal server error",
+        });
     }
 });
 
