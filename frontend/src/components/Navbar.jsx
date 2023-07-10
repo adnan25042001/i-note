@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import AuthContext from "../context/auth/AuthContext";
+import "../style/navbar.css";
 
 const Navbar = () => {
     const authContext = useContext(AuthContext);
-    const { token,setToken } = authContext;
-    console.log(token)
+    const { setToken } = authContext;
 
     const location = useLocation();
     return (
@@ -14,9 +14,12 @@ const Navbar = () => {
                 className="sticky-top navbar navbar-expand-lg bg-dark navbar-dark"
                 style={{ zIndex: 9 }}
             >
-                <div className="container-fluid">
+                <div
+                    className="container-fluid"
+                    style={{ padding: "5px 50px", gap: "10px" }}
+                >
                     <Link className="navbar-brand" to="/">
-                        Navbar
+                        iNote
                     </Link>
                     <button
                         className="navbar-toggler"
@@ -60,16 +63,16 @@ const Navbar = () => {
                                 </Link>
                             </li>
                         </ul>
-
-                        <button
-                            className="btn btn-outline-danger"
-                            onClick={() => {
-                                localStorage.setItem("token", null);
-                                setToken(null);
-                            }}
-                        >
-                            Logout
-                        </button>
+                        <div className="right-list" style={{ color: "white" }}>
+                            <button
+                                onClick={() => {
+                                    localStorage.setItem("token", null);
+                                    setToken(null);
+                                }}
+                            >
+                                Logout
+                            </button>
+                        </div>
                     </div>
                 </div>
             </nav>

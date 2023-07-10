@@ -1,0 +1,36 @@
+.navbar-nav {
+    gap: 15px;
+}
+
+.right-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    color: gray;
+}
+
+.right-list button {
+    border: none;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.right-list button:hover {
+    color: rgba(253, 114, 114, 0.75);
+}
+
+.active {
+    color: white !important;
+}
+
+@media (max-width: 992px) {
+    .navbar-nav {
+        gap: 0px;
+    }
+    .right-list {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+}

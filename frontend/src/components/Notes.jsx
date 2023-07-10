@@ -7,7 +7,6 @@ import { AiOutlinePlus } from "react-icons/ai";
 const Notes = () => {
     const context = useContext(NoteContext);
     const { notes, setShowAddNote } = context;
-    console.log(notes);
     if (notes) {
         notes.sort((a, b) => {
             let d1 = a.updatedDate || a.createdDate;

@@ -26,7 +26,7 @@ const Login = () => {
         });
 
         const data = await res.json();
-        console.log(data);
+
         if (data.success) {
             setShowAlert({
                 show: true,

@@ -20,7 +20,8 @@ function App() {
                                 path="/"
                                 element={
                                     <>
-                                        <Navbar /> <Home />
+                                        <Navbar />
+                                        <Home />
                                     </>
                                 }
                             />
@@ -28,7 +29,8 @@ function App() {
                                 path="/about"
                                 element={
                                     <>
-                                        <Navbar /> <About />
+                                        <Navbar />
+                                        <About />
                                     </>
                                 }
                             />

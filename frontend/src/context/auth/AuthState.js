@@ -7,18 +7,39 @@ const AuthState = ({ children }) => {
         JSON.parse(localStorage.getItem("token")) || null
     );
 
+    const [currentUser, setCurrentUser] = useState("User");
+
     const navigate = useNavigate();
+
+    const getUser = async (authToken) => {
+        const res = await fetch(
+            `${process.env.REACT_APP_URL}/api/auth/getuser`,
+            {
+                method: "GET",
+                headers: {
+                    "auth-token": authToken,
+                },
+            }
+        );
+        const data = await res.json();
+        if (data.success) {
+            setCurrentUser(data.user);
+            navigate("/");
+        }
+    };
 
     useEffect(() => {
         if (!token) {
             navigate("/login");
         } else {
-            navigate("/");
+            getUser(token);
         }
     }, [token]);
 
     return (
-        <AuthContext.Provider value={{ token, setToken }}>
+        <AuthContext.Provider
+            value={{ token, setToken, currentUser, setCurrentUser }}
+        >
             {children}
         </AuthContext.Provider>
     );
