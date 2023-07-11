@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import NoteState from "./context/notes/NoteState";
-import About from "./components/About";
 import Login from "./components/Login";
 import AuthState from "./context/auth/AuthState";
 import Signup from "./components/Signup";
@@ -25,15 +24,7 @@ function App() {
                                     </>
                                 }
                             />
-                            <Route
-                                path="/about"
-                                element={
-                                    <>
-                                        <Navbar />
-                                        <About />
-                                    </>
-                                }
-                            />
+                            {/* <Route path="/*" element={<div>Hello</div>} /> */}
                         </Routes>
                     </NoteState>
                 </AuthState>

@@ -145,7 +145,11 @@ router.get("/getuser", fetchUser, async (req, res) => {
     try {
         const userId = req.user.id;
         const user = await User.findById(userId).select("-password");
-        res.send({ success: true, user });
+        if (user) {
+            res.send({ success: true, user });
+        } else {
+            res.send({ success: false, error: "User not found" });
+        }
     } catch (error) {
         res.status(500).send({
             success: false,

@@ -25,6 +25,9 @@ const AuthState = ({ children }) => {
         if (data.success) {
             setCurrentUser(data.user);
             navigate("/");
+        } else {
+            localStorage.setItem("token", null);
+            setToken(null);
         }
     };
 
