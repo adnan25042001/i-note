@@ -10,7 +10,7 @@ const Home = () => {
     const context = useContext(NoteContext);
     const { showAddNote, showEditTag, showEditNote, showAlert } = context;
     return (
-        <div className="container mb-3 scrollbar">
+        <div className="container mb-3 scrollbar" style={{marginTop:"100px"}}>
             {showAlert?.show && <Alert />}
             {showAddNote && <AddNotePopup />}
             {showEditNote && <EditNotePopup />}

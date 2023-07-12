@@ -1,36 +1,35 @@
-.navbar-nav {
-    gap: 15px;
+.navbar-container {
+    width: 100%;
+    padding: 6px 50px;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
-.right-list {
+.navbar {
     display: flex;
-    justify-content: center;
+    color: white;
+    justify-content: space-between;
     align-items: center;
-    gap: 30px;
-    color: gray;
 }
 
-.right-list button {
+.logo {
+    font-size: 24px;
+}
+
+.logout {
     border: none;
     background-color: transparent;
-    color: rgba(255, 255, 255, 0.55);
+    color: white;
 }
 
-.right-list button:hover {
-    color: rgba(253, 114, 114, 0.75);
+.logout:hover {
+    color: crimson;
 }
 
-.active {
-    color: white !important;
-}
-
-@media (max-width: 992px) {
-    .navbar-nav {
-        gap: 0px;
-    }
-    .right-list {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 15px;
+@media (max-width: 560px) {
+    .navbar-container {
+        padding: 4px 20px;
     }
 }

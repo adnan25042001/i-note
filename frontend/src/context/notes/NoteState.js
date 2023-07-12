@@ -33,7 +33,7 @@ const NoteState = ({ children }) => {
             handleGetAllNotes();
         }
         // eslint-disable-next-line
-    }, [token]);
+    }, [token, notes]);
 
     const handleAddNote = (note) => {
         addNote(note, token).then(() => {

@@ -31,7 +31,7 @@ const Login = () => {
             setShowAlert({
                 show: true,
                 type: "success",
-                message: "Signup Successfull:)",
+                message: "Logged in Successfully:)",
             });
             localStorage.setItem("token", JSON.stringify(data.authtoken));
             setToken(data.authtoken);
